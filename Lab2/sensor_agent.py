@@ -41,7 +41,7 @@ async def main():
     agent = SensorAgent(jid, password, environment)
     
     print(f"Connecting to {jid}...")
-    await agent.start()
+    await agent.start(auto_register=True)
     print("Agent started! Monitoring environment...")
 
     try:
@@ -54,4 +54,5 @@ async def main():
         await agent.stop()
 
 if __name__ == "__main__":
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())

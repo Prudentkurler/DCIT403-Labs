@@ -29,7 +29,7 @@ async def main():
     agent = BasicAgent(jid, password)
     
     print(f"Connecting to {jid}...")
-    await agent.start()
+    await agent.start(auto_register=True)
     print("Agent started!")
 
     # Run for a while loop to keep the script alive
@@ -46,5 +46,5 @@ async def main():
 
 if __name__ == "__main__":
     # Ensure asyncio uses the correct loop policy on Windows if needed (Python 3.8+)
-    # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(main())
