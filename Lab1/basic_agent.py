@@ -1,50 +1,52 @@
 import time
 import asyncio
+import logging
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour
+
+# Configure professional logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
+logger = logging.getLogger("BasicAgent")
 
 class BasicAgent(Agent):
     class InformBehaviour(CyclicBehaviour):
         async def run(self):
-            print(f"[{self.agent.jid}] Hello World! I am running.")
-            await asyncio.sleep(5)  # Wait for 5 seconds before repeating
+            logger.info(f"Agent {self.agent.jid} is active and running.")
+            await asyncio.sleep(5) 
 
     async def setup(self):
-        print("Agent starting . . .")
+        logger.info(f"Initializing BasicAgent: {self.jid}")
         b = self.InformBehaviour()
         self.add_behaviour(b)
 
 async def main():
-    # Replace with your actual XMPP server details
-    # If running local prosody with docker:
-    # JID: agent1@localhost
-    # Password: password (you might need to register this user first depending on server config)
-    
-    # For this example, we assume the user will replace these credentials
-    # or use a public server if preferred.
-    
     jid = "basic_agent@localhost"
     password = "password"
     
     agent = BasicAgent(jid, password)
     
-    print(f"Connecting to {jid}...")
-    await agent.start(auto_register=True)
-    print("Agent started!")
+    logger.info(f"Connecting to XMPP server at localhost...")
+    try:
+        await agent.start(auto_register=True)
+        logger.info("Agent started successfully!")
+    except Exception as e:
+        logger.error(f"Failed to start agent: {e}")
+        return
 
-    # Run for a while loop to keep the script alive
+    # Run for a demonstration period
     try:
         while True:
             await asyncio.sleep(1)
-            # You can add logic here to check if agent is still alive
             if not agent.is_alive():
                  break
     except KeyboardInterrupt:
-        print("Stopping agent...")
+        logger.info("Shutting down agent...")
         await agent.stop()
-        print("Agent stopped.")
+        logger.info("Agent stopped.")
 
 if __name__ == "__main__":
-    # Ensure asyncio uses the correct loop policy on Windows if needed (Python 3.8+)
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    try:
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    except AttributeError:
+        pass # Not on Windows
     asyncio.run(main())

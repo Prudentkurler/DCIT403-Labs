@@ -11,5 +11,5 @@ services:
       - PROSODY_ADMINS=admin@localhost
       - PROSODY_ENABLE_REGISTRATION=true
       - PROSODY_AUTHENTICATION=internal_plain
-    volumes:
-      - ./prosody-data:/var/lib/prosody
+    # volumes:
+      # - ./prosody-data:/var/lib/prosody

@@ -1,0 +1,8 @@
+[Thu Jan 29 12:51:10 2026] TYPE:flood SEVERITY:high LOC:{'x': 26, 'y': 39}
+[Thu Jan 29 12:51:10 2026] TYPE:earthquake SEVERITY:medium LOC:{'x': 79, 'y': 59}
+[Thu Jan 29 12:51:10 2026] TYPE:earthquake SEVERITY:low LOC:{'x': 34, 'y': 97}
+[Thu Jan 29 12:51:11 2026] TYPE:flood SEVERITY:low LOC:{'x': 53, 'y': 44}
+[Thu Jan 29 12:51:11 2026] TYPE:building_collapse SEVERITY:medium LOC:{'x': 97, 'y': 52}
+[Thu Jan 29 12:51:11 2026] TYPE:flood SEVERITY:medium LOC:{'x': 21, 'y': 51}
+[Thu Jan 29 12:51:12 2026] TYPE:building_collapse SEVERITY:high LOC:{'x': 10, 'y': 28}
+[Thu Jan 29 12:51:12 2026] TYPE:fire SEVERITY:high LOC:{'x': 6, 'y': 33}

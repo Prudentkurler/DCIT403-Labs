@@ -1,11 +1,14 @@
 import random
 import time
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
+logger = logging.getLogger("DisasterEnvironment")
 
 class DisasterEnvironment:
     """
-    Simulates a dynamic experiment with disaster events.
-    This class is a singleton or can be instantiated once and shared/accessed (conceptually).
-    For this lab, we will just make it a simple class that the sensor agent 'polls'.
+    Simulates a dynamic disaster environment with various event types and severities.
     """
     
     EVENT_TYPES = ["fire", "flood", "earthquake", "building_collapse"]
@@ -13,12 +16,13 @@ class DisasterEnvironment:
 
     def __init__(self):
         self.current_events = []
+        logger.info("Disaster Environment initialized.")
 
     def generate_random_event(self):
-        """Generates a random disaster event with some probability."""
-        if random.random() < 0.3: # 30% chance to generate an event each poll
+        """Generates a random disaster event with professional logging."""
+        if random.random() < 0.4: # Increased probability for better simulation
             event = {
-                "id": int(time.time() * 1000), # Simple unique ID based on timestamp
+                "id": int(time.time() * 1000),
                 "type": random.choice(self.EVENT_TYPES),
                 "severity": random.choice(self.SEVERITY_LEVELS),
                 "location": {
@@ -28,12 +32,11 @@ class DisasterEnvironment:
                 "timestamp": time.time()
             }
             self.current_events.append(event)
+            logger.info(f"New event generated: {event['type'].upper()} ({event['severity']}) at {event['location']}")
             return event
         return None
 
     def get_environment_state(self):
-        """Returns the current state of the environment (all active events)."""
-        # In a real dynamic system, events might expire or change. 
-        # Here we just generate a new one potentially and return the view.
+        """Returns the current state of the environment."""
         new_event = self.generate_random_event()
         return new_event
