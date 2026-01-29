@@ -54,13 +54,12 @@ docker-compose up -d
 **Goal:** Verify SPADE installation and XMPP server connection.
 
 - **Run Agent:**
-  ```bash
+  ```powershell
   python Lab1/basic_agent.py
   ```
-- **Generate Report:**
-  ```bash
-  python Lab1/generate_report.py
-  ```
+- **Professional Report:**
+  - [Lab 1 Markdown Report](file:///c:/Users/user/Desktop/work/Assignments/DCIT403-Labs/Lab1/REPORT.md)
+  - Generate Word: `python Lab1/generate_report.py`
 
 ---
 
@@ -68,14 +67,17 @@ docker-compose up -d
 **Goal:** Model agent perception of disaster events (Fire, Flood, etc.).
 
 - **Run Sensor Agent:**
-  ```bash
+  ```powershell
   python Lab2/sensor_agent.py
   ```
 - **Run Simulation (Offline):**
   This script generates events and logs them without requiring a full XMPP handshake.
-  ```bash
+  ```powershell
   python Lab2/simulate.py
   ```
+- **Professional Report:**
+  - [Lab 2 Markdown Report](file:///c:/Users/user/Desktop/work/Assignments/DCIT403-Labs/Lab2/REPORT.md)
+  - Generate Word: `python Lab2/generate_report.py`
 - **Generate Report:**
   After running the agent or simulation, generate the Word report:
   ```bash
