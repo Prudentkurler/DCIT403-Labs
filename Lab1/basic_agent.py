@@ -27,6 +27,7 @@ async def main():
     
     logger.info(f"Connecting to XMPP server at localhost...")
     try:
+        # For local development, we disable TLS verification to avoid certificate issues
         await agent.start(auto_register=True)
         logger.info("Agent started successfully!")
     except Exception as e:

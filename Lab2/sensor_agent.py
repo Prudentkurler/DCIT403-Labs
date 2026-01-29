@@ -46,6 +46,7 @@ async def main():
     
     logger.info(f"Connecting to XMPP server for SensorAgent...")
     try:
+        # For local development, we disable TLS verification to avoid certificate issues
         await agent.start(auto_register=True)
         logger.info("SensorAgent online!")
     except Exception as e:
